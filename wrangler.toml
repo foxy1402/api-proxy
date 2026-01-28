@@ -1,0 +1,40 @@
+# Cloudflare Workers Configuration
+# Deploy with: wrangler deploy
+
+name = "portfolio-tracker-proxy"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Account details (get from Cloudflare dashboard)
+# account_id = "your-account-id-here"
+
+# Routes (optional - for custom domains)
+# routes = [
+#   { pattern = "api.yourdomain.com/*", zone_name = "yourdomain.com" }
+# ]
+
+# Environment variables
+# Set your CoinMarketCap API key here or via Wrangler CLI
+# DO NOT commit your actual API key to git!
+[vars]
+# CMC_API_KEY = "your-key-here"  # For development only
+
+# For production, set via CLI:
+# wrangler secret put CMC_API_KEY
+
+# Rate limiting (optional)
+[limits]
+# cpu_ms = 50
+
+# KV namespaces (optional - for caching)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-namespace-id"
+
+# Development
+[env.development]
+name = "portfolio-tracker-proxy-dev"
+
+# Production
+[env.production]
+name = "portfolio-tracker-proxy"
