@@ -82,6 +82,32 @@ npm run deploy
 
 ---
 
+## ☁️ Alternative: Deploy via Browser (No Install)
+
+If you don't want to install Node.js or run commands on your computer, you can deploy everything directly from the Cloudflare Dashboard in your browser.
+
+### 1. Create the Worker
+1. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com).
+2. Go to **Workers & Pages** > **Create Application** > **Create Worker**.
+3. Name it `portfolio-proxy` (or similar) and click **Deploy**.
+
+### 2. Add Your Code
+1. Click **Edit Code** (or "Quick Edit").
+2. Delete everything in `worker.js`.
+3. Copy and Paste the entire code from your local `worker.js` file.
+4. Click **Save and deploy**.
+
+### 3. Add Your API Key
+1. Go to **Settings** > **Variables and Secrets**.
+2. Click **Add**.
+3. Name: `CMC_API_KEY`, Value: `Your-CoinMarketCap-API-Key`.
+4. Click **Deploy** to save.
+
+### 4. Get Your URL
+Copy the Worker URL from the Preview section (e.g., `https://portfolio-proxy.your-name.workers.dev`). Use this URL in your app.
+
+---
+
 ## 📡 API Endpoints
 
 ### Health Check
