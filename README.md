@@ -36,10 +36,19 @@ npx wrangler login
 Edit `wrangler.toml` and add your Cloudflare account ID:
 
 ```toml
-account_id = "your-account-id-here"
+account_id = "abc123def456..." # Your actual account ID
 ```
 
-Find your account ID at: [dash.cloudflare.com](https://dash.cloudflare.com)
+**How to find your Account ID:**
+1. Go to [dash.cloudflare.com](https://dash.cloudflare.com)
+2. Click any domain (or "Workers & Pages")
+3. Copy "Account ID" from the right sidebar
+
+**(Optional) Change Worker Name:**
+You can also change the `name` field in `wrangler.toml` if you prefer a different name:
+```toml
+name = "my-crypto-proxy" # Default: portfolio-tracker-proxy
+```
 
 ### 4. Set Your API Key
 
@@ -57,13 +66,19 @@ Get a free key at: [coinmarketcap.com/api](https://pro.coinmarketcap.com/signup)
 npm run deploy
 ```
 
+**Copy the Worker URL** from the output (e.g., `https://my-crypto-proxy.your-subdomain.workers.dev`).
+
 ### 6. Test
 
-```bash
-node test.js
-```
-
-(Update `WORKER_URL` in test.js first!)
+1. Open `test.js`
+2. Update line 7 with your **deployed Worker URL**:
+   ```javascript
+   const WORKER_URL = 'https://my-crypto-proxy.your-subdomain.workers.dev';
+   ```
+3. Run the test:
+   ```bash
+   node test.js
+   ```
 
 ---
 
@@ -152,6 +167,7 @@ Make sure you're using the deployed worker URL, not the API directly
 - ✅ Never exposed to browser/client
 - ✅ HTTPS only
 - ⚠️ Never commit API keys to git!
+- ℹ️ Consider git-ignoring `wrangler.toml` if you want to keep your Account ID private
 
 ---
 
